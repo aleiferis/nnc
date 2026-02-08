@@ -68,7 +68,7 @@ class ControllabiltyGrammianController(BaseController):
             self.WTfm1 = torch.inverse(self.WTf)
             self.ut = self.ut_inverse
         else:
-            self.solve = torch.solve(self.vTf, self.WTf)[0]
+            self.solve = torch.linalg.solve(self.WTf, self.vTf)
             self.ut = self.ut_solve
 
     def forward(self, t: torch.Tensor, x: torch.Tensor) -> torch.Tensor:

@@ -113,7 +113,7 @@ def closest_previous_time(requested_times, solver_times):
     solver_times = solver_times.unsqueeze(0)
     difft = (requested_times - solver_times)
     difft = difft
-    difft[difft < 0] = np.infty
+    difft[difft < 0] = np.inf
     time_index = difft.argmin(1).flatten()
     return solver_times.squeeze()[time_index], time_index
 
